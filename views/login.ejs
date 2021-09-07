@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+</head>
+<body>
+    
+    <div class="form_container">
+        <div class="form_wrapper">
+            <div class="user-icon">
+                <i class="fas fa-user-circle fa-4x"></i>
+            </div>
+            <h2>Login</h2>
+            <form class="login-form">
+                <div class="txt_field">
+                    <input type="email" name="email" autocomplete="off" required>
+                    <label for="email" class="label-name">
+                        <span class="content-name">Email</span>
+                    </label>
+                </div>
+                <span class="error email"></span> 
+                <br> 
+                <div class="txt_field">
+                    <input type="password" name="password" autocomplete="off" required>
+                    <label for="password" class="label-name">
+                        <span class="content-name">Password</span>
+                    </label>
+                </div>
+                <span class="error password"></span>
+                <br>
+                <div class="forgot-password"><span>Forgot Password?</span> </div>
+                <button type="submit" class="submit_btn">Login</button>
+                <div class="or-div">OR</div>
+                <div class="login-btn center">
+                    <img src="/Google__G__Logo.png" alt="google_logo">
+                    <span>Sign in with Google</span>
+                </div>
+                <div class="create-new-account">Don't have an account? <a href="/auth/signup"> Create new</a> </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const form_elem = document.querySelector('.login-form');
+        const emailError = document.querySelector('.email.error');
+        const passwordError = document.querySelector('.password.error');
+
+        form_elem.addEventListener("submit", async (e)=>{
+
+            e.preventDefault();
+            const email  = form_elem.email.value;
+            const password = form_elem.password.value;
+    
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+            try {
+
+                const res = await fetch('/auth/login',{
+                    method: 'POST',
+                    body: JSON.stringify({email,password}),
+                    headers: { 'Content-Type': 'application/json'}
+                }) 
+                
+                const data = await res.json();
+                if(data.errors){
+                    emailError.textContent = data.errors['email'];
+                    passwordError.textContent = data.errors['password'];
+                }
+
+                if(data.user){
+                    window.location.href = '/home';
+                }
+
+            } 
+            catch (err) {
+                console.log(err);
+            } 
+        })
+    </script>
+</body>
+</html>

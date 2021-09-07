@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #15161b;
+    list-style: none;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Styling the form */
+.form_container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_wrapper{
+    min-height: 350px;
+    width: 280px;
+    padding: 0px 30px;
+    padding-bottom: 10px;
+    margin:0px 20px;
+    border-radius: 5px;
+    background-color: #202029;
+    
+}
+
+.user-icon{
+    color: #7a00ff;
+    text-align: center;
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+.form_wrapper h2{
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);  
+    margin: 5px 0px 20px 0px; 
+      
+}
+
+
+/* Styling the individual field */
+.txt_field{
+    position: relative;
+    height:20px;  
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+.txt_field input{
+    width: 100%;
+    height: 100%;
+    padding: 10px 0px 5px 10px;
+    background-color: #202029;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 5px;
+    outline: none;
+    color: rgba(255,255,255,0.8);
+}
+
+.txt_field label{
+    position: absolute;
+    bottom: -8px;
+    left: 0.7rem;
+    width: 100%;
+    height:100%;
+    font-size: 18px;
+    pointer-events: none;
+    /* border-bottom: 2px solid rgba(255,255,255,0.4); */
+    color: rgba(255,255,255,0.5);
+}
+
+.txt_field label span{
+    left: -0.2rem;
+    transform: translateY(-90%);
+    font-size: 14px;
+    background-color: #202029;
+    padding: 0px 5px;
+}
+
+/* .txt_field label::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    bottom: -1;
+    border-bottom: 2px solid #7a00ff;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+} */
+
+.content-name{
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.5s ease;
+}
+
+.error{
+    color: #ff0039;
+    font-size: 14px;
+    font-weight: bold;
+}
+.txt_field input:hover{
+    border: 1px solid #fff;
+}
+
+.txt_field input:focus, 
+.txt_field input:valid{
+    border: 1px solid #7a00ff;
+}
+
+
+.txt_field input:focus + .label-name .content-name,
+.txt_field input:valid + .label-name .content-name
+{
+    color: #7a00ff;
+}
+
+/* .txt_field input:focus + .label-name::after,
+.txt_field input:valid + .label-name::after
+{
+    transform: translateX(0%);
+} */
+
+.forgot-password{
+    width: 100%;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.forgot-password span{
+    cursor: pointer;
+    color: #7a00ff;
+}
+
+.create-new-account span{
+    cursor: pointer;
+}
+
+.submit_btn{
+    height: 40px;
+    width: 100%;
+    border: none;
+    margin: 5px 0px;
+    font-weight:600;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background-color:#7b00ffab ; 
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding:0px 12px;
+    margin-bottom: 10px;
+}
+
+.submit_btn:hover{
+    background-color:#7a00ff ; 
+}
+
+.or-div::before{
+    content: " ";
+    position: absolute;
+    width: 45%;
+    height: 0.5px;
+    background-color: rgba(255,255,255,0.4);
+    top: 50%;
+    left: 0;
+}
+
+.or-div::after{
+    content: " ";
+    position: absolute;
+    width: 45%;
+    height: 0.5px;
+    background-color: rgba(255,255,255,0.4);
+    top: 50%;
+    right: 0;
+}
+
+.or-div{
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+}
+
+.login-btn ,
+.signup-btn{
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.signup-btn{
+    margin-bottom: 20px;
+}
+
+
+.signup-img-container{
+    height: 100%;
+    width: 20%;
+    text-align: center;
+    background-color: #fff;
+    
+}
+
+.login-btn img,
+.signup-btn img{
+    height: 20px;
+    width: 20px;
+}
+
+.login-btn span,
+.signup-btn span{
+    font-size: 14px;
+    padding-left: 5px;
+    text-align: center;
+    font-weight: 500;
+        
+}
+
+.create-new-account{
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin: 10px 0px;
+    
+}
+
+.create-new-account a{
+    text-decoration: none;
+    color: #7a00ff;
+}
+
+.forgot-password span:hover,
+.create-new-account a:hover{
+    text-decoration: underline;
+}
+
