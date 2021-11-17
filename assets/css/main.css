@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root{
+    --primary: #15161b;
+    --secondary:#202029 ;
+    --pure: #fff;
+    --purple: #7a00ff;
+    --orange: #ff420f;
+    --red: #b00020;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--primary);
+}
+
+.hamburger{
+    color: rgba(255,255,255,0.5);
+}
+
+.logo{
+    font-size: x-large;
+    color: #7a00ff;
+    font-weight: 600;
+}
+
+.logo:hover{
+    color: #7a00ff;
+}
+
+header i{
+    font-size: x-large;
+}

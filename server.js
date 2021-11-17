@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 const checkUser = require('./middleware/checkUser');
 const axios = require('axios');
 const schedule = require('node-schedule');
@@ -22,6 +23,7 @@ mongoose.connect(DB_URL,{useNewUrlParser: true, useUnifiedTopology: true})
     console.log("Unable to connect to the db...");
 })
 
+
 //setting ejs as the view engine
 app.set("view engine",'ejs');
 
@@ -35,7 +37,7 @@ schedule.scheduleJob('*/15 * * * *',async ()=>{
         const response = await axios.get(url);
         const articles = response.data.articles.slice(0,12);
 
-        let count =1;
+        const res =  await NewsArticle.deleteMany();
         articles.forEach(async article =>{
 
             const {author, title, content, url, urlToImage, publishedAt} = article;
@@ -44,7 +46,7 @@ schedule.scheduleJob('*/15 * * * *',async ()=>{
             })
             const result = await newsArticle.save();
         })
-
+        console.log("News in db updated");
     }
     catch(err){
         console.log(err.message);
@@ -65,8 +67,13 @@ app.get('/home', checkUser,(req,res)=>{
     res.sendFile('./home.html', { root: __dirname });
 })
 
+app.get('/news', (req,res)=>{
+    res.render('news');
+})
+
 
 app.use('/auth', authRoutes);
+app.use('/user',userRoutes);
 
 
 app.listen(PORT, () =>{

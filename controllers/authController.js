@@ -55,14 +55,12 @@ module.exports.create_user = async (req,res) => {
         const result = await newUser.save();
         const token = createToken(result._id);
         res.cookie('jwt',token,{maxAge: maxTime*1000});
-        res.status(200).send({user:'Signup successful!'});
-        
+        res.status(200).send({user:'Signup successful!'}); 
     } 
     catch (err) {
         const errors = handleErrors(err);
         res.status(400).send({errors});
     }
-
 };
 
 //Login a user
